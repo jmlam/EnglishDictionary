@@ -36,7 +36,7 @@ while True:
                         word = closest[i]
                         break
                 break
-        if word not in dictionary: #if not mispelled then restart loop.
+        if word not in dictionary: #if not mispelled then restart
             print('\nThe word does not exist or is not in this dictionary. Please try again.\n')
             continue
         
