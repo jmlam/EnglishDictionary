@@ -4,12 +4,13 @@ deflist = json.load(open("data.json"))
 
 def dictionary(word):
     '''takes a word as an input and returns a list of definitions'''
-    for i in [word, word.lower(), word.title()]: # attempting different iterations of the word
+    word = word.replace('.', "")
+    for i in [word, word.lower(), word.title(), word.upper()]: # attempting different iterations of the word
         try:
             return deflist[i]
         except:
             pass
-    closest = gcm(word, deflist.keys()) # 60% cutoff
+    closest = gcm(word.lower(), deflist.keys()) # attempting 3 words that seem similar at a 60% similarity. User checked.
     for i in range(len(closest)):
         while True:
             yn = input('Did you mean %s ? y/n: ' % closest[i])
