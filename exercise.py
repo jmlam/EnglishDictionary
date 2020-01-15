@@ -7,9 +7,18 @@ con = mysql.connector.connect(
     database = 'ardit700_pm1database'
 )
 
-cursor = con.cursor()# create cursor
-#Dictionary contins the columns 'Expression' and 'Definition'
-query = cursor.execute("SELECT * FROM Dictionary WHERE expression = 'inlay'") #execute query at database
-results = cursor.fetchall() #fetch results
-
-print(results)
+#Testing multiple queries
+while True:
+    word = str(input('Enter word: '))
+    if word == '/end':
+        break
+    else:
+        cursor = con.cursor()# create cursor
+        #Dictionary contins the columns 'Expression' and 'Definition'
+        query = cursor.execute("SELECT definition FROM Dictionary WHERE expression = '%s'" % word)  #execute query at database. return definition of word
+        results = cursor.fetchall() #fetch results
+        if results:
+            for result in results:
+                print(result[0])
+        else:
+            print('There is no word! Please double check.')
