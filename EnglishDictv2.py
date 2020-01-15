@@ -5,7 +5,7 @@ deflist = json.load(open("data.json"))
 
 def dictionary(word):
     '''takes a word as an input and returns a list of definitions'''
-    word = re.sub(r'\W+', "", word)
+    word = re.sub(r'\W+', "", word) #strip of all punctuation
     wordtypes = [word, word.lower(), word.title(), word.upper()]
     for word in wordtypes: # attempting different iterations of the word
         try:
